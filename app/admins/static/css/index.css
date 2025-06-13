@@ -1,0 +1,29 @@
+:root {
+    --primary-color: #03038b;
+    --primary-2-color: #08085a;
+    --secondary-color: #FFFFFF;
+    --subs-color: #252525;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+h2 {
+    font-weight: 700 !important;
+}
+
+.btn-sys-primary {
+    width: 150px;
+    color: var(--secondary-color) !important;
+    background-color: var(--primary-2-color) !important;
+}
+
+.btn-sys-primary:hover {
+    background-color: #08085ab0 !important;
+}
