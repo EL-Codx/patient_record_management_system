@@ -1,27 +1,124 @@
 <aside id="sidebar">
     <div class="d-flex">
         <button id="toggle-btn" type="button">
-            <i class="lni lni-grid-alt"></i>
+            <i class="bi bi-list"></i>
         </button>
+        <div class="sidebar-logo">
+            <a href="#">EL</a>
+        </div>
     </div>
     <ul class="sidebar-nav">
+        <!-- Dashboard -->
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="lni lni-user"></i>
-                <span>Profile</span>
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
             </a>
         </li>
+
+        <!-- Patient Management -->
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="lni lni-agenda"></i>
-                <span>Task</span>
+                <i class="bi bi-people-fill"></i>
+                <span>Patient Management</span>
             </a>
+        </li>
+
+        <!-- User Management -->
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                data-bs-target="#user-management" aria-expanded="false" aria-controls="user-management">
+                <i class="bi bi-person-fill"></i>
+                <span>User Management</span>
+            </a>
+            <ul id="user-management" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">View Users</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">Manage Roles & Permissions</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Appointment -->
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                data-bs-target="#appointment-management" aria-expanded="false" aria-controls="appointment-management">
+                <i class="bi bi-calendar-check-fill"></i>
+                <span>Appointments</span>
+            </a>
+            <ul id="appointment-management" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">View Appointment</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">Manage Schedules</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Medical Records -->
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#medicals"
+                aria-expanded="false" aria-controls="medicals">
+                <i class="bi bi-file-medical-fill"></i>
+                <span>Medical Record Access</span>
+            </a>
+            <ul id="medicals" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">View Patient Record</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">Assign Record Access</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Reports -->
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#reports"
+                aria-expanded="false" aria-controls="reports">
+                <i class="bi bi-file-bar-graph-fill"></i>
+                <span>Reports & Analytics</span>
+            </a>
+            <ul id="reports" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">Appointment Reports</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">Patient Activity</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">System Usage Logs</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- System Administration -->
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                data-bs-target="#sys-admin" aria-expanded="false" aria-controls="sys-admin">
+                <i class="bi bi-gear-fill"></i>
+                <span>System Administration</span>
+            </a>
+            <ul id="sys-admin" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">System Settings</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">Audit Logs</a>
+                </li>
+            </ul>
         </li>
     </ul>
-    <div class="sidebar-footer">
-        <a href="#" class="sidebar-link">
-            <i class="lni lni-exit"></i>
-            <span>Logout</span>
-        </a>
+
+    <!-- Support & Help Desk -->
+    <div class="footer">
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-info-square-fill"></i>
+                <span>Support & Help Desk</span>
+            </a>
     </div>
 </aside>
