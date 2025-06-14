@@ -27,3 +27,11 @@ h2 {
 .btn-sys-primary:hover {
     background-color: #08085ab0 !important;
 }
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: var(--secondary-color);
+}
