@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
 Dashboard
 {% endblock %}
@@ -8,7 +9,219 @@ Admin Dashboard
 {% endblock %}
 
 {% block content %}
-<div>
-    Dashboard
+<div class="dashboard-container">
+    <!-- overview of details -->
+    <div class="my-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
+            <!-- patient card -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="top-cap">
+                            <div class="left-info">
+                                <p class="container-name">Patient Total</p>
+                                <h1 class="card-title fw">805</h1>
+                            </div>
+                            <div class="right-info">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                        <div class="card-router">
+                            <a href="#">
+                                <span>View Details</span>
+                                <i class="bi bi-arrow-right-short"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- appointment card -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="top-cap">
+                            <div class="left-info">
+                                <p class="container-name">Today's Appointment</p>
+                                <h1 class="card-title fw">14</h1>
+                            </div>
+                            <div class="right-info">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                        <div class="card-router">
+                            <a href="#">
+                                <span>View Details</span>
+                                <i class="bi bi-arrow-right-short"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- active users -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="top-cap">
+                            <div class="left-info">
+                                <p class="container-name">Active Users</p>
+                                <h1 class="card-title fw">83</h1>
+                            </div>
+                            <div class="right-info">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                        <div class="card-router">
+                            <a href="#">
+                                <span>View Details</span>
+                                <i class="bi bi-arrow-right-short"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- total users -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="top-cap">
+                            <div class="left-info">
+                                <p class="container-name">Total Users</p>
+                                <h1 class="card-title fw">14</h1>
+                            </div>
+                            <div class="right-info">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                        <div class="card-router">
+                            <a href="#">
+                                <span>View Details</span>
+                                <i class="bi bi-arrow-right-short"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Charts -->
+        <div class="col-lg-8">
+
+            <!-- Top -->
+            <div class="row g-4">
+                <!-- Bar -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Appointments This Week</h6>
+                            <canvas id="appointmentsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donut -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">User Roles Distribution</h6>
+                            <canvas id="rolesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Line Chart -->
+            <div class="row g-4 mt-1">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">New Patient Registrations (Weekly)</h6>
+                            <canvas id="patientsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Feeds -->
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title"><i class="bi bi-newspaper me-2"></i> Recent Activities</h6>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Dr. Smith joined the system today.</li>
+                        <li class="list-group-item">System maintenance scheduled for Friday.</li>
+                        <li class="list-group-item">New patient registered: Jane Doe.</li>
+                        <li class="list-group-item">Weekly report generated successfully.</li>
+                        <li class="list-group-item">Low disk space warning on server 2.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
+<!-- scripts on charts -->
+<script>
+    // Appointments (Bar Chart)
+    const appointmentsChart = new Chart(document.getElementById('appointmentsChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Appointments',
+                data: [12, 19, 7, 14, 10, 5, 3],
+                backgroundColor: '#2E86C1'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    // Patient Registrations (Line Chart)
+    const patientsChart = new Chart(document.getElementById('patientsChart'), {
+        type: 'line',
+        data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{
+                label: 'Patients',
+                data: [45, 62, 30, 90],
+                borderColor: '#28B463',
+                fill: false,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    // User Roles (Doughnut Chart)
+    const rolesChart = new Chart(document.getElementById('rolesChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Doctors', 'Nurses', 'Admins'],
+            datasets: [{
+                data: [40, 30, 10],
+                backgroundColor: ['#2E86C1', '#28B463', '#F1C40F']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
+
 {% endblock %}

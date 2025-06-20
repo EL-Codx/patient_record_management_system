@@ -4,13 +4,14 @@
             <i class="bi bi-list"></i>
         </button>
         <div class="sidebar-logo">
-            <a href="#">EL</a>
+            <a href="{% url 'management_dashboard' %}">PRMS</a>
         </div>
     </div>
     <ul class="sidebar-nav">
         <!-- Dashboard -->
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{% url 'management_dashboard' %}"
+                class="sidebar-link {% if request.resolver_match.url_name == 'management_dashboard' %}active{% endif %}">
                 <i class="bi bi-grid-1x2-fill"></i>
                 <span>Dashboard</span>
             </a>
@@ -18,7 +19,8 @@
 
         <!-- Patient Management -->
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a  href="{% url 'patient_management_view' %}"
+                class="sidebar-link {% if request.resolver_match.url_name == 'patient_management_view' %}active{% endif %}">
                 <i class="bi bi-people-fill"></i>
                 <span>Patient Management</span>
             </a>

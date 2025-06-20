@@ -1,0 +1,99 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.fw {
+    font-weight: bolder;
+}
+
+.top-cap {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.right-info i {
+    font-size: 3rem;
+}
+
+.card-router {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding: 0;
+    background-color: #000000a2;
+    border-radius: 5px;
+}
+
+.card-router a {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem 1rem;
+    width: 100%;
+}
+
+.card-router a:hover {
+    color: var(--secondary-color);
+}
+
+.card-router:hover {
+    background-color: var(--primary-2-color);
+}
+
+.card {
+    flex: 1 !important;
+}
+
+
+/* overview */
+.overview {
+    display: flex;
+    gap: 20px;
+}
+
+.left-feed {
+    flex-direction: 2;
+}
+
+.right-feed {
+    flex: 2;
+}
+
+canvas {
+  height: 200px !important;
+}
+
+
+
+/* responsiveness */
+@media (max-width: 600px) {
+    .mob-head {
+        font-size: 1rem;
+    }
+
+    .fw {
+        font-size: 1.5rem;
+    }
+
+    .right-info i {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .left-analysis {
+        flex-direction: column;
+    }
+
+    .overview{
+    flex-direction: column !important;
+}
+}

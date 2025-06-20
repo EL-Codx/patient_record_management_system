@@ -14,3 +14,8 @@ def forget_admin_password(request):
 # management dashboard
 def management_dashboard(request):
     return render(request, 'index.html', {})
+
+
+# management dashboard
+def patient_management_view(request):
+    return render(request, 'patient_mgt_view.html', {})

@@ -7,19 +7,6 @@
     padding: 0;
 }
 
-h1 {
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-
-ul, li {
-    list-style-type: none !important;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-}
-
 .wrapper {
     display: flex;
 }
@@ -130,3 +117,6 @@ a.sidebar-link:hover {
     transition: all 0.2s ease-out;
 }
 
+.footer li {
+    margin-bottom: 50px !important;
+}

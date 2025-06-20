@@ -18,6 +18,23 @@ h2 {
     font-weight: 700 !important;
 }
 
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+h6, .chart-head i {
+    color: #6e6e6e;
+}
+
+ul, li {
+    list-style-type: none !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .btn-sys-primary {
     width: 150px;
     color: var(--secondary-color) !important;
@@ -34,4 +51,10 @@ h2 {
     overflow: hidden;
     transition: all 0.35s ease-in-out;
     background-color: var(--secondary-color);
+}
+
+a.active {
+    background-color: #00000081;
+    color: #3b7ddd !important;
+    border-left: 3px solid #3b7ddd !important;
 }
