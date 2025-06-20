@@ -16,6 +16,16 @@ def management_dashboard(request):
     return render(request, 'index.html', {})
 
 
-# management dashboard
+# patient management
 def patient_management_view(request):
     return render(request, 'patient_mgt_view.html', {})
+
+
+# user management
+def users_management_view(request):
+    return render(request, 'users.html', {})
+
+
+# roles and permissions
+def roles_permissions(request):
+    return render(request, 'roles.html', {})

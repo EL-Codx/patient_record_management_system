@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Roles and Permissions
+{% endblock %}
+
+{% block pageTitle %}
+Roles and Permissions
+{% endblock %}
+
+
+{% block content %}
+<div class="py-5">
+  <!-- Add Role Button -->
+  <div class="mb-3 text-end">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRoleModal">
+      <i class="bi bi-shield-plus me-1"></i> Add New Role
+    </button>
+  </div>
+
+  <!-- Roles Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Role</th>
+          <th>Permissions</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Doctor</td>
+          <td>
+            <span class="badge bg-secondary">View Patients</span>
+            <span class="badge bg-secondary">Edit Patients</span>
+            <span class="badge bg-secondary">Schedule Appointments</span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-warning text-white me-1"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td>Admin</td>
+          <td>
+            <span class="badge bg-success">All Permissions</span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-warning text-white me-1"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+        <!-- Add more roles here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal: Add New Role -->
+<div class="modal fade" id="addRoleModal" tabindex="-1" aria-labelledby="addRoleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Role</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="addRoleForm">
+          <div class="mb-3">
+            <label for="roleName" class="form-label">Role Name</label>
+            <input type="text" class="form-control" id="roleName" required>
+          </div>
+
+          <h6 class="mt-4">Assign Permissions</h6>
+
+          <div class="row g-4">
+
+            <!-- Patient Records -->
+            <div class="col-md-4">
+              <h6>Patient Records</h6>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm1"> <label class="form-check-label" for="perm1">View Patients</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm2"> <label class="form-check-label" for="perm2">Add Patient</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm3"> <label class="form-check-label" for="perm3">Edit Patient</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm4"> <label class="form-check-label" for="perm4">Delete Patient</label></div>
+            </div>
+
+            <!-- Appointments -->
+            <div class="col-md-4">
+              <h6>Appointments</h6>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm5"> <label class="form-check-label" for="perm5">View Appointments</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm6"> <label class="form-check-label" for="perm6">Schedule Appointment</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm7"> <label class="form-check-label" for="perm7">Cancel Appointment</label></div>
+            </div>
+
+            <!-- Users -->
+            <div class="col-md-4">
+              <h6>User Management</h6>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm8"> <label class="form-check-label" for="perm8">View Users</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm9"> <label class="form-check-label" for="perm9">Add User</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm10"> <label class="form-check-label" for="perm10">Edit User</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm11"> <label class="form-check-label" for="perm11">Delete User</label></div>
+            </div>
+
+            <!-- Reports -->
+            <div class="col-md-4">
+              <h6>Reports</h6>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm12"> <label class="form-check-label" for="perm12">View Reports</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm13"> <label class="form-check-label" for="perm13">Export Reports</label></div>
+            </div>
+
+            <!-- Role Settings -->
+            <div class="col-md-4">
+              <h6>Role & Permission Settings</h6>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm14"> <label class="form-check-label" for="perm14">Manage Roles</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="perm15"> <label class="form-check-label" for="perm15">Assign Permissions</label></div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" form="addRoleForm">
+          <i class="bi bi-save2 me-1"></i> Save Role
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

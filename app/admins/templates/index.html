@@ -16,7 +16,7 @@ Admin Dashboard
             <!-- patient card -->
             <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body btn-warning">
                         <div class="top-cap">
                             <div class="left-info">
                                 <p class="container-name">Patient Total</p>
@@ -27,7 +27,7 @@ Admin Dashboard
                             </div>
                         </div>
                         <div class="card-router">
-                            <a href="#">
+                            <a href="{% url 'patient_management_view' %}">
                                 <span>View Details</span>
                                 <i class="bi bi-arrow-right-short"></i>
                             </a>
@@ -39,7 +39,7 @@ Admin Dashboard
             <!-- appointment card -->
             <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body btn-primary">
                         <div class="top-cap">
                             <div class="left-info">
                                 <p class="container-name">Today's Appointment</p>
@@ -62,7 +62,7 @@ Admin Dashboard
             <!-- active users -->
             <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body btn-secondary">
                         <div class="top-cap">
                             <div class="left-info">
                                 <p class="container-name">Active Users</p>
@@ -85,7 +85,7 @@ Admin Dashboard
             <!-- total users -->
             <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body btn-danger">
                         <div class="top-cap">
                             <div class="left-info">
                                 <p class="container-name">Total Users</p>

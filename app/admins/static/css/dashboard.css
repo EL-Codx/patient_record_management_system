@@ -44,7 +44,7 @@
 }
 
 .card-router:hover {
-    background-color: var(--primary-2-color);
+    background-color: #000000d2;
 }
 
 .card {
