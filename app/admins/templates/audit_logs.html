@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Audit Logs
+{% endblock %}
+
+{% block pageTitle %}
+Audit Logs
+{% endblock %}
+
+{% block content %}
+<div class="py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0"></h2>
+        <button class="btn btn-outline-primary" onclick="window.print()">
+            <i class="bi bi-printer me-1"></i> Print Logs
+        </button>
+    </div>
+
+    <div class="audit-section">
+        <div class="row search-bar">
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Search by user, action or patient ID...">
+            </div>
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>User</th>
+                    <th>Action</th>
+                    <th>Record</th>
+                    <th>Timestamp</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>admin_emmanuel</td>
+                    <td>Edited Patient Record</td>
+                    <td>Patient #1023</td>
+                    <td>2025-06-23 11:15 AM</td>
+                    <td><span class="badge bg-success">Success</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>nurse_jane</td>
+                    <td>Viewed Medical History</td>
+                    <td>Patient #1019</td>
+                    <td>2025-06-22 02:30 PM</td>
+                    <td><span class="badge bg-info">Viewed</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>dr_smith</td>
+                    <td>Prescribed Medication</td>
+                    <td>Patient #1008</td>
+                    <td>2025-06-21 09:50 AM</td>
+                    <td><span class="badge bg-success">Saved</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -70,6 +70,11 @@ canvas {
   height: 200px !important;
 }
 
+.mob-head {
+    font-weight: bold !important;
+    color: #3d3d3d;
+}
+
 
 
 /* responsiveness */

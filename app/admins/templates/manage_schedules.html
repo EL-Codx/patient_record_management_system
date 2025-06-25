@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Schedules
+{% endblock %}
+
+{% block pageTitle %}
+Schedule Calendar
+{% endblock %}
+
+{% block content %}
+<!-- Calendar -->
+<div class="py-3">
+  <div id="calendar"></div>
+</div>
+
+
+<!-- <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const calendarEl = document.getElementById('calendar');
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'timeGridWeek',  // You can use dayGridMonth, timeGridDay, etc.
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      slotMinTime: "07:00:00",
+      slotMaxTime: "18:00:00",
+      allDaySlot: false,
+      height: "auto",
+      events: [
+        {
+          title: 'Dr. John Mensah - Room A',
+          start: '2025-06-24T09:00:00',
+          end: '2025-06-24T14:00:00',
+          color: '#198754' // green
+        },
+        {
+          title: 'Nurse Akosua - Ward B',
+          start: '2025-06-25T10:00:00',
+          end: '2025-06-25T13:00:00',
+          color: '#0d6efd' // blue
+        },
+        {
+          title: 'Dr. Efua Asante - Room C',
+          start: '2025-06-26T11:00:00',
+          end: '2025-06-26T15:00:00',
+          color: '#ffc107' // yellow
+        }
+      ]
+    });
+
+    calendar.render();
+  });
+</script> -->
+{% endblock %}

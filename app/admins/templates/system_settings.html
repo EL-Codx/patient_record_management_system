@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+System Settings
+{% endblock %}
+
+{% block pageTitle %}
+System Settings
+{% endblock %}
+
+{% block content %}
+<div class="py-5">
+
+    <!-- Session Timeout Setting -->
+    <div class="settings-section">
+        <h5>Session Settings</h5>
+        <div class="mb-3">
+            <label for="timeoutDuration" class="form-label">Session Timeout Duration (in minutes)</label>
+            <input type="number" class="form-control" id="timeoutDuration" placeholder="e.g. 15">
+        </div>
+    </div>
+
+    <!-- Hospital Info -->
+    <div class="settings-section">
+        <h5>Hospital Information</h5>
+        <div class="mb-3">
+            <label for="hospitalName" class="form-label">Hospital Name</label>
+            <input type="text" class="form-control" id="hospitalName" placeholder="Enter hospital name">
+        </div>
+        <div class="mb-3">
+            <label for="hospitalLogo" class="form-label">Upload Logo (<strong>Note:</strong> The logo should not be more than 500 × 200 px)</label>
+            <input type="file" class="form-control" id="hospitalLogo" accept="image/*">
+        </div>
+    </div>
+
+    <!-- Timezone Setting -->
+    <div class="settings-section">
+        <h5>Timezone Setting</h5>
+        <div class="mb-3">
+            <label for="timezone" class="form-label">Select Timezone</label>
+            <select class="form-select" id="timezone">
+                <option value="">-- Select --</option>
+                <option value="UTC">UTC</option>
+                <option value="Africa/Accra">Africa/Accra</option>
+                <option value="America/New_York">America/New_York</option>
+                <option value="Europe/London">Europe/London</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Backup and Restore -->
+    <div class="settings-section">
+        <h5>Backup & Restore</h5>
+        <div class="mb-3">
+            <button class="btn btn-outline-primary me-2">
+                <i class="bi bi-download"></i> Download Backup
+            </button>
+        </div>
+        <div class="mb-3">
+            <label for="restoreFile" class="form-label">Select Backup File to Restore</label>
+            <input type="file" class="form-control mb-2" id="restoreFile" accept=".zip,.json">
+            <button class="btn btn-outline-danger">
+                <i class="bi bi-arrow-clockwise"></i> Restore from File
+            </button>
+        </div>
+    </div>
+
+    <!-- API Integration -->
+    <div class="settings-section">
+        <h5>API & Integration Settings</h5>
+        <div class="mb-3">
+            <label for="apiKey" class="form-label">API Key</label>
+            <input type="text" class="form-control" id="apiKey" value="sk_live_ABC123XYZ456" readonly>
+            <button class="btn btn-sm btn-outline-secondary mt-2">Regenerate Key</button>
+        </div>
+    </div>
+
+    <!-- License Info -->
+    <div class="settings-section">
+        <h5>License & Version</h5>
+        <p><strong>License:</strong> PRMS Enterprise</p>
+        <p><strong>Version:</strong> v2.3.1</p>
+        <p><strong>Issued To:</strong> Green Life Hospital, Accra</p>
+    </div>
+
+    <!-- Save and Cancel Buttons -->
+    <div class="d-flex justify-content-end gap-2">
+        <button class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Cancel Changes
+        </button>
+        <button class="btn btn-success">
+            <i class="bi bi-save"></i> Save Changes
+        </button>
+    </div>
+</div>
+{% endblock %}

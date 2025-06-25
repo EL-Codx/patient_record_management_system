@@ -27,7 +27,7 @@
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item text-center text-primary" href="#">View All</a></li>
+            <li><a class="dropdown-item text-center text-primary" href="{% url 'notifications' %}">View All</a></li>
         </ul>
     </div>
 
@@ -37,7 +37,7 @@
             <i class="bi bi-person-circle"></i> Admin
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'admin_profile' %}">Profile</a></li>
             <li><a class="dropdown-item" href="#">Logout</a></li>
         </ul>
     </div>

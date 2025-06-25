@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Patient Activities
+{% endblock %}
+
+{% block pageTitle %}
+Patient Activities
+{% endblock %}
+
+{% block content %}
+<div class="py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0"></h2>
+        <button class="btn btn-outline-primary" onclick="window.print()">
+            <i class="bi bi-printer me-1"></i> Print Activities
+        </button>
+    </div>
+
+    <div class="activity-section">
+        <h5>Activity Log</h5>
+        <ul class="activity-log">
+            <li>
+                <strong>Jane Doe</strong> visited <strong>Dr. John Smith</strong> for routine checkup.
+                <div class="activity-meta">2025-06-21 at 10:00 AM</div>
+            </li>
+            <li>
+                <strong>Mark Lee</strong> uploaded a lab test file.
+                <div class="activity-meta">2025-06-20 at 03:45 PM</div>
+            </li>
+            <li>
+                <strong>Jane Doe</strong> updated her medication notes.
+                <div class="activity-meta">2025-06-18 at 09:15 AM</div>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
