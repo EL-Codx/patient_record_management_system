@@ -1,0 +1,44 @@
+<!-- Search Bar -->
+<form class="d-none d-md-flex w-50 mx-3">
+    <input class="form-control me-2" type="search" placeholder="Search patients, records..." aria-label="Search">
+</form>
+
+<!-- Notifications & User Info -->
+<div class="d-flex align-items-center gap-3">
+    <!-- Notifications -->
+    <div class="position-relative dropdown notification-dropdown">
+        <i class="bi bi-bell fs-4" id="notificationBell" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            3
+            <span class="visually-hidden">unread notifications</span>
+        </span>
+
+        <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="notificationBell">
+            <li>
+                <h6 class="dropdown-header">Notifications</h6>
+            </li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-event me-2"></i> 2 new appointments
+                    today</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-circle me-2"></i> System backup
+                    failed</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus me-2"></i> New patient registered</a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item text-center text-primary" href="{% url 'doctors_notifications' %}">View All</a></li>
+        </ul>
+    </div>
+
+    <!-- User -->
+    <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i> Doctor
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="{% url 'doctors_profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+    </div>
+</div>

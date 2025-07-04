@@ -1,0 +1,178 @@
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.left-container {
+    position: relative;
+    width: 50%; /* adjust as needed */
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+    text-align: center;
+}
+
+.left-container::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("../assets/images/login-background.jpeg") no-repeat center center/cover;
+    filter: blur(4px);
+    z-index: 0;
+}
+
+.left-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+.left-container p {
+    font-size: 1.4rem;
+}
+
+.left-container .logo {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.bar {
+    width: 80%;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: #0000008a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 50%;
+    height: 100vh;
+}
+
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+form .username, form .password, form .email {
+    height: 50px;
+    width: 80%;
+    padding: 5px;
+    background: linear-gradient(var(--primary-color), var(--primary-2-color));
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+}
+
+.username input, .password input, .email input {
+    height: 100%;
+    width: 90%;
+    padding-left: 15px;
+    color: #f1f1f1;
+    background: none;
+    border: none;
+    border-radius: 5px;
+} 
+
+input:focus {
+    border: none;
+    outline: none;
+}
+
+i {
+    color: white;
+    font-size: 1.6rem;
+}
+
+.forget-password {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--primary-color);
+}
+
+a {
+    color: var(--primary-2-color) !important;
+}
+
+
+/* Responsive styles */
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-container, .right-container {
+        width: 100%;
+        height: auto;
+        min-height: 300px;
+    }
+
+    .bar {
+        width: 90%;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    .right-container {
+        gap: 30px;
+        padding: 30px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-container {
+        padding: 0;
+    }
+
+    .bar {
+        width: 100%;
+        font-size: 1.2rem;
+        border-radius: 0;
+    }
+
+    .left-container .logo {
+        font-size: 2rem;
+    }
+
+    .right-container h2 {
+        font-size: 1.3rem;
+    }
+
+    form .username, form .password, form .email {
+        width: 95%;
+    }
+
+    .forget-password {
+        width: 95%;
+    }
+
+    .sub-btn button {
+        width: 100%;
+    }
+}
