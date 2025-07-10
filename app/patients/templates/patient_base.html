@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Dashboard - PRMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f0f4f8;
+    }
+    .navbar {
+      background-color: #1e3a8a;
+    }
+    .navbar-brand, .nav-link, .dropdown-item {
+      color: #ffffff !important;
+    }
+    .dropdown-menu {
+      background-color: #1e3a8a;
+    }
+    .dropdown-item:hover {
+      background-color: #374bb7;
+    }
+    .card-box {
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 5px solid #0d6efd;
+      border-radius: 0.5rem;
+    }
+    .card-box h5 {
+      font-weight: 600;
+    }
+    .card-title {
+      color: #0d6efd;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Responsive Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark px-4 shadow">
+  <a class="navbar-brand fw-bold" href="#">PRMS</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+    <ul class="navbar-nav mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link" href="#">Appointments</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Medical Records</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Lab Results</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+          <i class="bi bi-person-circle"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><hr class="dropdown-divider bg-white"></li>
+          <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Patient Dashboard Content -->
+<div class="container py-5">
+  <h3 class="mb-4">Welcome Back, <span class="text-primary">Jane Doe</span></h3>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm card-box bg-white p-3">
+        <h6 class="text-muted mb-1">Upcoming Appointment</h6>
+        <h5>July 15, 2025 @ 9:00 AM</h5>
+        <small class="text-secondary">With Dr. Samuel Mensah</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm card-box bg-white p-3 border-start border-success border-5">
+        <h6 class="text-muted mb-1">Latest Lab Result</h6>
+        <h5>Blood Panel - Normal</h5>
+        <small class="text-secondary">Uploaded: July 8</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm card-box bg-white p-3 border-start border-warning border-5">
+        <h6 class="text-muted mb-1">Last Visit Note</h6>
+        <p class="mb-0">Continue meds, reduce sugar intake, check BP weekly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional Tip or Reminder Section -->
+  <div class="mt-5">
+    <div class="card shadow-sm bg-light border-start border-info border-4">
+      <div class="card-body">
+        <h6 class="text-info">💡 Health Tip</h6>
+        <p class="mb-0">Stay active. Aim for 30 minutes of light exercise each day to keep your heart strong and reduce stress.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

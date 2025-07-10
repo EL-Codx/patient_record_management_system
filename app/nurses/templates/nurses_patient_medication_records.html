@@ -1,0 +1,210 @@
+{% extends 'nurses_base.html' %}
+{% load static %}
+{% block title %}
+Medical Record
+{% endblock %}
+
+{% block pageTitle %}
+Medical Records
+{% endblock %}
+
+{% block content %}
+<div class="py-5" id="recordContainer">
+    <div class="d-flex justify-content-between align-items-center mb-3 no-print">
+        <h3 class="mb-0"></h3>
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-danger" onclick="exportPDF()">
+                <i class="bi bi-file-earmark-pdf me-1"></i> Export PDF
+            </button>
+            <button class="btn btn-success" onclick="saveData()">
+                <i class="bi bi-save me-1"></i> Save
+            </button>
+            <!-- <button class="btn btn-primary" id="toggleEditBtn">
+                <i class="bi bi-pencil-square me-1"></i> Edit Record
+            </button> -->
+        </div>
+    </div>
+    <div class="mb-4">
+        <h5>Patient: <strong>Jane Doe</strong></h5>
+        <p>ID: <code>PT-1005</code></p>
+    </div>
+
+    <div class="mb-4">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="assignDoctor" class="form-label">Assign to Doctor</label>
+                <select class="form-select" id="assignDoctor" disabled>
+                    <option>Dr. John Smith</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="assignNurse" class="form-label">Assign to Nurse</label>
+                <select class="form-select" id="assignNurse" disabled>
+                    <option>Nurse Patricia Laryea</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <ul class="nav nav-tabs mb-3" id="recordTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="history-tab" data-bs-toggle="tab" data-bs-target="#history"
+                type="button">Medical History</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="condition-tab" data-bs-toggle="tab" data-bs-target="#condition"
+                type="button">Current Condition</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="medication-tab" data-bs-toggle="tab" data-bs-target="#medication"
+                type="button">Medications</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button">Doctor's
+                Notes</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="visits-tab" data-bs-toggle="tab" data-bs-target="#visits" type="button">Visit
+                History</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="lab-tab" data-bs-toggle="tab" data-bs-target="#lab" type="button">Lab Test
+                Files</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="recordTabsContent">
+        <div class="tab-pane fade show active" id="history" role="tabpanel">
+            <div class="form-section">
+                <label class="form-label">Past Illnesses</label>
+                <textarea class="form-control readonly-textarea" readonly>Asthma, Malaria</textarea>
+                <label class="form-label mt-3">Surgeries</label>
+                <textarea class="form-control readonly-textarea" readonly>Appendectomy (2019)</textarea>
+                <label class="form-label mt-3">Allergies</label>
+                <textarea class="form-control readonly-textarea" readonly>Penicillin</textarea>
+                <label class="form-label mt-3">Family History</label>
+                <textarea class="form-control readonly-textarea" readonly>Father had hypertension</textarea>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="condition" role="tabpanel">
+            <form id="vitalForm">
+                <div class="form-section">
+                    <label class="form-label">Current Diagnoses</label>
+                    <textarea class="form-control">High blood pressure</textarea>
+                    <label class="form-label mt-3">Symptoms</label>
+                    <textarea class="form-control">Dizziness, fatigue</textarea>
+                    
+                    <label class="form-label mt-3">Vital Signs</label>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <i class="form-label">Blood Pressure (mmHg)</i>
+                            <input type="text" class="form-control" id="bp" placeholder="e.g., 120/80">
+                        </div>
+                        <div class="col-md-4">
+                            <i class="form-label">Pulse Rate (bpm)</i>
+                            <input type="number" class="form-control" id="pulse" placeholder="e.g., 72">
+                        </div>
+                        <div class="col-md-4">
+                            <i class="form-label">Temperature (°C)</i>
+                            <input type="number" step="0.1" class="form-control" id="temp" placeholder="e.g., 36.7">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4">
+                            <i class="form-label">Respiratory Rate (bpm)</i>
+                            <input type="number" class="form-control" id="resp" placeholder="e.g., 16">
+                        </div>
+                        <div class="col-md-4">
+                            <i class="form-label">Oxygen Saturation (%)</i>
+                            <input type="number" class="form-control" id="oxygen" placeholder="e.g., 98">
+                        </div>
+                        <div class="col-md-4">
+                            <i class="form-label">Weight (kg)</i>
+                            <input type="number" step="0.1" class="form-control" id="weight" placeholder="e.g., 68.5">
+                        </div>
+                    </div>
+
+                    <!-- <div class="d-flex justify-content-end gap-2 mt-4">
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                        <button type="submit" class="btn btn-success">Save Current Condition</button>
+                    </div> -->
+
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="medication" role="tabpanel">
+            <div class="form-section">
+                <label class="form-label">Current Medications</label>
+                <textarea class="form-control readonly-textarea" readonly>Lisinopril 10mg daily</textarea>
+                <label class="form-label mt-3">Treatment Notes</label>
+                <textarea class="form-control readonly-textarea"
+                    readonly>Continue medication for 30 days, monitor blood pressure weekly.</textarea>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="notes" role="tabpanel">
+            <div class="form-section">
+                <label class="form-label">Observations</label>
+                <textarea class="form-control readonly-textarea"
+                    readonly>Patient responds well to current medication. Advised rest.</textarea>
+                <label class="form-label mt-3">Doctor’s Instructions</label>
+                <textarea class="form-control readonly-textarea"
+                    readonly>Reduce salt intake, return in 2 weeks.</textarea>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="visits" role="tabpanel">
+            <div class="form-section">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Purpose</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025-06-10</td>
+                            <td>Routine Check</td>
+                            <td>BP slightly elevated. Continued meds.</td>
+                        </tr>
+                        <tr>
+                            <td>2025-06-17</td>
+                            <td>Follow-up</td>
+                            <td>Improved vitals. Scheduled next review.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="lab" role="tabpanel">
+            <div class="form-section">
+                <label class="form-label">Upload Lab Test File</label>
+                <input type="file" class="form-control mb-3" id="labUpload" accept="application/pdf,image/*">
+                <label class="form-label mt-3">Uploaded Files</label>
+                <ul class="list-group" id="labFileList"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.location.hash === '#lab') {
+            var tabTrigger = document.querySelector('button[data-bs-target="#lab"]');
+            if (tabTrigger) {
+                var tab = new bootstrap.Tab(tabTrigger);
+                tab.show();
+            }
+        }
+    });
+
+    document.getElementById('vitalForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert("Vitals saved successfully!");
+        // Send data via AJAX or Django form POST
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,73 @@
+<aside id="sidebar">
+    <div class="d-flex">
+        <button id="toggle-btn" type="button">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="sidebar-logo">
+            <a href="{% url 'nurses_dashboard' %}">PRMS</a>
+        </div>
+    </div>
+    <ul class="sidebar-nav">
+        <!-- Dashboard -->
+        <li class="sidebar-item">
+            <a href="{% url 'nurses_dashboard' %}"
+                class="sidebar-link {% if request.resolver_match.url_name == 'nurses_dashboard' %}active{% endif %}">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <!-- Patient Management -->
+        <li class="sidebar-item">
+            <a  href="{% url 'nurses_assigned_patient_management' %}"
+                class="sidebar-link {% if request.resolver_match.url_name == 'nurses_assigned_patient_management' %}active{% endif %}">
+                <i class="bi bi-people-fill"></i>
+                <span>My Patient</span>
+            </a>
+        </li>
+
+        <!-- Appointment -->
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed {% if request.resolver_match.url_name == 'nurses_appointments' or request.resolver_match.url_name == 'nurses_manage_schedules' %}active{% endif %}" data-bs-toggle="collapse"
+                data-bs-target="#appointment-management" aria-expanded="false" aria-controls="appointment-management">
+                <i class="bi bi-calendar-check-fill"></i>
+                <span>Appointments</span>
+            </a>
+            <ul id="appointment-management" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="{% url 'nurses_appointments' %}" class="sidebar-link {% if request.resolver_match.url_name == 'nurses_appointments' %}active{% endif %}">View Appointment</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{% url 'nurses_manage_schedules' %}" class="sidebar-link {% if request.resolver_match.url_name == 'nurses_manage_schedules' %}active{% endif %}">Manage Schedules</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Reports -->
+        <!-- <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed {% if request.resolver_match.url_name == 'appointment_report' or request.resolver_match.url_name == 'patient_activities' %}active{% endif %}" data-bs-toggle="collapse" data-bs-target="#reports"
+                aria-expanded="false" aria-controls="reports">
+                <i class="bi bi-file-bar-graph-fill"></i>
+                <span>Reports & Analytics</span>
+            </a>
+            <ul id="reports" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="{% url 'appointment_report' %}" class="sidebar-link {% if request.resolver_match.url_name == 'appointment_report' %}active{% endif %}">Appointment Reports</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{% url 'patient_activities' %}" class="sidebar-link {% if request.resolver_match.url_name == 'patient_activities' %}active{% endif %}">Patient Activity</a>
+                </li>
+            </ul>
+        </li> -->
+
+        <!-- Messages -->
+        <li class="sidebar-item">
+            <a  href="{% url 'nurses_messsages' %}"
+                class="sidebar-link {% if request.resolver_match.url_name == 'nurses_messsages' %}active{% endif %}">
+                <i class="bi bi-chat-left-dots-fill"></i>
+                <span>Messages</span>
+            </a>
+        </li>
+    </ul>
+
+</aside>

@@ -1,0 +1,63 @@
+{% extends 'nurses_base.html' %}
+{% load static %}
+{% block title %}
+Profile
+{% endblock %}
+
+{% block pageTitle %}
+Profile
+{% endblock %}
+
+{% block content %}
+<div class=" py-5">
+  <div class="row g-4">
+    <div class="col-md-4 text-center">
+      <img src="#" alt="Profile Picture" class="profile-img mb-3">
+      <div class="mb-3">
+        <label for="profilePicture" class="form-label">Upload New Picture</label>
+        <input type="file" class="form-control" id="profilePicture" accept="image/*">
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="profile-card">
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullName" value="John Doe">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" value="admin@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" value="+233 55 123 4567">
+        </div>
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <input type="text" class="form-control" id="role" value="System Administrator" readonly>
+        </div>
+        <hr>
+        <div class="mb-3">
+          <label for="currentPassword" class="form-label">Current Password</label>
+          <input type="password" class="form-control" id="currentPassword">
+        </div>
+        <div class="mb-3 password-toggle">
+          <label for="newPassword" class="form-label">New Password</label>
+          <input type="password" class="form-control" id="newPassword"><br>
+          <i class="bi bi-eye-slash toggle-btn" onclick="togglePassword('newPassword', this)"></i>
+        </div>
+        <div class="mb-3 password-toggle">
+          <label for="confirmPassword" class="form-label">Confirm New Password</label>
+          <input type="password" class="form-control" id="confirmPassword"><br>
+          <i class="bi bi-eye-slash toggle-btn" onclick="togglePassword('confirmPassword', this)"></i>
+        </div>
+        <div class="d-flex justify-content-end gap-2">
+          <button class="btn btn-secondary">Cancel</button>
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
