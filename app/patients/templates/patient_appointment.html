@@ -1,0 +1,51 @@
+{% extends 'patient_base.html' %}
+{% load static %}
+{% block title %}Appointments{% endblock %}
+{% block content %}
+<div class="py-5">
+  <h3 class="mb-4">My Appointments</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white shadow-sm">
+      <thead class="table-light">
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-07-15</td>
+          <td>09:00 AM</td>
+          <td>Dr. Samuel Mensah</td>
+          <td>Cardiology</td>
+          <td><span class="status-badge badge-upcoming">Upcoming</span></td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-danger">Cancel</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2025-06-17</td>
+          <td>10:30 AM</td>
+          <td>Dr. Linda Boateng</td>
+          <td>Dermatology</td>
+          <td><span class="status-badge badge-completed">Completed</span></td>
+          <td class="text-center text-muted">-</td>
+        </tr>
+        <tr>
+          <td>2025-06-10</td>
+          <td>11:00 AM</td>
+          <td>Dr. James Owusu</td>
+          <td>General</td>
+          <td><span class="status-badge badge-cancelled">Cancelled</span></td>
+          <td class="text-center text-muted">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

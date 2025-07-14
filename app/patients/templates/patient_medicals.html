@@ -1,0 +1,122 @@
+{% extends 'patient_base.html' %}
+{% load static %}
+{% block title %}Medical Records{% endblock %}
+{% block content %}
+<div class="py-5">
+    <h3 class="mb-4">My Medical Records</h3>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs" id="recordTabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#history"
+                type="button">Medical History</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#condition"
+                type="button">Current Condition</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#medications"
+                type="button">Medications</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#notes"
+                type="button">Doctor's Notes</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#visits" type="button">Visit
+                History</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#lab" type="button">Lab
+                Results</button></li>
+    </ul>
+
+    <!-- Tab Contents -->
+    <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="history">
+            <div class="form-section">
+                <label class="form-label">Illness History</label>
+                <textarea class="form-control readonly-textarea" readonly>Asthma, Malaria</textarea>
+                <label class="form-label mt-3">Surgeries</label>
+                <textarea class="form-control readonly-textarea" readonly>Appendectomy - 2019</textarea>
+                <label class="form-label mt-3">Allergies</label>
+                <textarea class="form-control readonly-textarea" readonly>Penicillin</textarea>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="condition">
+            <div class="form-section">
+                <label class="form-label">Diagnoses</label>
+                <textarea class="form-control readonly-textarea" readonly>Hypertension</textarea>
+                <label class="form-label mt-3">Symptoms</label>
+                <textarea class="form-control readonly-textarea" readonly>Fatigue, headache</textarea>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="medications">
+            <div class="form-section">
+                <label class="form-label">Current Medications</label>
+                <textarea class="form-control readonly-textarea" readonly>Lisinopril 10mg daily</textarea>
+                <label class="form-label mt-3">Treatment Notes</label>
+                <textarea class="form-control readonly-textarea"
+                    readonly>Continue medication for 30 days, monitor BP weekly</textarea>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="notes">
+            <div class="form-section">
+                <label class="form-label">Doctor Observations</label>
+                <textarea class="form-control readonly-textarea"
+                    readonly>Patient stable and improving. Advised salt reduction.</textarea>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="visits">
+            <div class="form-section">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th>Doctor</th>
+                            <th>Outcome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025-06-10</td>
+                            <td>Routine Check</td>
+                            <td>Dr. Mensah</td>
+                            <td>Stable, continued meds</td>
+                        </tr>
+                        <tr>
+                            <td>2025-06-17</td>
+                            <td>Follow-up</td>
+                            <td>Dr. Mensah</td>
+                            <td>Improving</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="lab">
+            <div class="form-section">
+                <p><strong>Latest Uploaded Lab Files:</strong></p>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                        <a href="#">Blood-Test-June.pdf</a>
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-file-earmark-image text-info me-2"></i>
+                        <a href="#">Xray-Report-May.png</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.location.hash === '#lab') {
+            var tabTrigger = document.querySelector('button[data-bs-target="#lab"]');
+            if (tabTrigger) {
+                var tab = new bootstrap.Tab(tabTrigger);
+                tab.show();
+            }
+        }
+    });
+</script>
+{% endblock %}

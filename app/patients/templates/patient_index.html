@@ -1,0 +1,40 @@
+{% extends 'patient_base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="py-5">
+  <h3 class="mb-4">Welcome Back, <span class="text-primary">Jane Doe</span></h3>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm card-box bg-white p-3">
+        <h6 class="text-muted mb-1">Upcoming Appointment</h6>
+        <h5>July 15, 2025 @ 9:00 AM</h5>
+        <small class="text-secondary">With Dr. Samuel Mensah</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm card-box bg-white p-3">
+        <h6 class="text-muted mb-1">Latest Lab Result</h6>
+        <h5>Blood Panel - Normal</h5>
+        <small class="text-secondary">Uploaded: July 8</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm card-box bg-white p-3">
+        <h6 class="text-muted mb-1">Last Visit Note</h6>
+        <p class="mb-0">Continue meds, reduce sugar intake, check BP weekly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional Tip or Reminder Section -->
+  <div class="mt-5">
+    <div class="card shadow-sm bg-light">
+      <div class="card-body">
+        <h6 class="text-info">💡 Health Tip</h6>
+        <p class="mb-0">Stay active. Aim for 30 minutes of light exercise each day to keep your heart strong and reduce stress.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
