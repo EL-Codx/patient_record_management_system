@@ -4,9 +4,10 @@ from accounts.models import User
 
 class PatientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(null=True)
     address = models.CharField(max_length=255)
     phone = models.CharField(max_length=20)
+    is_active = models.BooleanField(default=False)
 
 class MedicalRecord(models.Model):
     patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)

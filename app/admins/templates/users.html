@@ -35,29 +35,44 @@ User Management
     <table class="table table-bordered table-hover align-middle">
       <thead class="table-light">
         <tr>
-          <th scope="col">User ID</th>
+          <th scope="col">Patient ID</th>
+          <th scope="col">Username</th>
           <th scope="col">Full Name</th>
+          <th scope="col">Phone</th>
           <th scope="col">Role</th>
-          <th scope="col">Email</th>
           <th scope="col">Status</th>
-          <th scope="col">Last Login</th>
+          <th scope="col">Last Visit</th>
           <th scope="col" class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
+        {% for user in users %}
         <tr>
-          <td>#U001</td>
-          <td>Dr. John Mensah</td>
-          <td>Doctor</td>
-          <td>john.mensah@prms.com</td>
-          <td><span class="badge bg-success">Active</span></td>
-          <td>2025-06-18 14:05</td>
+          <td>#P000{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.first_name }} {{ user.last_name }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            {% if user.is_active %}
+            <span class="badge bg-success">Active</span>
+            {% else %}
+            <span class="badge bg-danger">Inactive</span>
+            {% endif %}
+          </td>
+          <td>2025-06-17 </td>
           <td class="text-center">
-            <button class="btn btn-sm btn-info text-white me-1" title="View"><i class="bi bi-eye"></i></button>
-            <button class="btn btn-sm btn-warning text-white me-1" title="Edit"><i class="bi bi-pencil-square"></i></button>
-            <button class="btn btn-sm btn-danger" title="Delete"><i class="bi bi-trash"></i></button>
+            <a href="{% url 'view_user' user.id %}" class="btn btn-sm btn-info text-white me-1" title="View"><i class="bi bi-eye"></i></a>
+
+            <a href="{% url 'edit_user' user.id %}" class="btn btn-sm btn-warning" title="Edit"><i class="bi bi-pencil-square"></i></a>
+
+            <a href="{% url 'delete_user' user.id %}" class="btn btn-sm btn-danger" title="Delete"><i class="bi bi-trash"></i></a>
           </td>
         </tr>
+
+
+        <!-- Edit User Modal -->
+        {% endfor %}
       </tbody>
     </table>
   </div>
@@ -78,7 +93,7 @@ User Management
 <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
-      
+
       <!-- Header -->
       <div class="modal-header">
         <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
@@ -87,27 +102,32 @@ User Management
 
       <!-- Body -->
       <div class="modal-body">
-        <form id="addUserForm">
+        <form id="addUserForm" action="{% url 'register_user' %}" method="post">
+          {% csrf_token %}
           <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-control" name="first_name" required>
+            </div>
 
             <div class="col-md-6">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-control" required>
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-control" name="last_name" required>
             </div>
 
             <div class="col-md-6">
               <label class="form-label">Email</label>
-              <input type="email" class="form-control" required>
+              <input type="email" class="form-control" name="email" required>
             </div>
 
             <div class="col-md-6">
               <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-control">
+              <input type="tel" class="form-control" name="phone">
             </div>
 
             <div class="col-md-6">
               <label class="form-label">Role</label>
-              <select class="form-select" required>
+              <select class="form-select" required name="role">
                 <option selected disabled>Select Role</option>
                 <option>Admin</option>
                 <option>Doctor</option>
@@ -117,17 +137,17 @@ User Management
 
             <div class="col-md-6">
               <label class="form-label">Username</label>
-              <input type="text" class="form-control" required>
+              <input type="text" class="form-control" name="username" required>
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <label class="form-label">Password</label>
               <input type="password" class="form-control" required>
-            </div>
+            </div> -->
 
             <div class="col-md-12">
               <label class="form-label">Additional Notes</label>
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" rows="3" name="notes"></textarea>
             </div>
 
           </div>
@@ -137,9 +157,11 @@ User Management
       <!-- Footer -->
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn btn-primary" form="addUserForm"><i class="bi bi-save2 me-1"></i> Save User</button>
+        <button class="btn btn-primary" form="addUserForm" type="submit"><i class="bi bi-save2 me-1"></i> Save
+          User</button>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock %}

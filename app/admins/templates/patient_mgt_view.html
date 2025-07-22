@@ -36,9 +36,12 @@ Patient Management
       <thead class="table-light">
         <tr>
           <th scope="col">Patient ID</th>
+          <th scope="col">Username</th>
           <th scope="col">Full Name</th>
-          <th scope="col">Age / Gender</th>
+          <!-- <th scope="col">Gender</th>
+          <th scope="col">Age</th> -->
           <th scope="col">Phone</th>
+          <th scope="col">Role</th>
           <th scope="col">Status</th>
           <th scope="col">Last Visit</th>
           <th scope="col" class="text-center">Actions</th>
@@ -46,19 +49,30 @@ Patient Management
       </thead>
       <tbody>
         <!-- Data -->
+       {% for user in users %}
         <tr>
-          <td>#P0001</td>
-          <td>Jane Doe</td>
-          <td>32 / Female</td>
-          <td>+233 55 123 4567</td>
-          <td><span class="badge bg-success">Active</span></td>
-          <td>2025-06-17</td>
+          <td>#P000{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.first_name }} {{ user.last_name }}</td>
+          <!-- <td>{{ user.gender }}</td>
+          <td>{{ user.age }}</td> -->
+          <td>{{ user.phone }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            {% if user.is_active %}
+              <span class="badge bg-success">Active</span>
+            {% else %}
+              <span class="badge bg-danger">Inactive</span>
+            {% endif %}
+          </td>
+          <td>2025-06-17 </td>
           <td class="text-center">
             <a href="{% url 'patient_record' %}" class="btn btn-sm btn-info text-white me-1" title="View"><i class="bi bi-eye"></i></a>
             <button class="btn btn-sm btn-warning text-white me-1" title="Edit"><i class="bi bi-pencil-square"></i></button>
             <button class="btn btn-sm btn-danger" title="Delete"><i class="bi bi-trash"></i></button>
           </td>
         </tr>
+       {% endfor %}
       </tbody>
     </table>
   </div>
