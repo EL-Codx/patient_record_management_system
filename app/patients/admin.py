@@ -3,9 +3,9 @@ from .models import PatientProfile, MedicalRecord, LabTest, Appointment
 
 @admin.register(PatientProfile)
 class PatientProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'date_of_birth', 'phone', 'address')
-    search_fields = ('user__username', 'phone')
-    fields = ('user', 'date_of_birth', 'address', 'phone', 'is_active')
+    list_display = ('user', 'date_of_birth', 'home_address')
+    search_fields = ('user_username', 'emergency_contact')
+    fields = ('user', 'date_of_birth', 'home_address')
 
 @admin.register(MedicalRecord)
 class MedicalRecordAdmin(admin.ModelAdmin):

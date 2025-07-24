@@ -9,6 +9,12 @@ class User(AbstractUser):
         ('patient', 'Patient'),
     )
     
+    GENDER_CHOICES = (
+        ('male', 'Male'),
+        ('female', 'Female')
+    )
+    
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     phone = models.CharField(max_length=20, blank=True, null=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES)
     profile_picture = models.ImageField(upload_to='profiles/', blank=True, null=True)

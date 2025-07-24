@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from accounts.models import User    
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
+from django.contrib import messages
+from app.patients.models import PatientProfile
+from django.db import transaction
+
 
 
 # management login
@@ -43,7 +47,7 @@ def register_user(request):
         notes = request.POST.get('notes').strip()
 
         try:
-            # Generating password
+            # password
             phone_digits = ''.join(filter(str.isdigit, phone))[-4:]  # Last 4 digits
             raw_password = f"{first_name[0].lower()}{last_name[-1].upper()}{phone_digits}" 
             
@@ -120,6 +124,69 @@ def manage_schedules(request):
 # patient records
 def patient_record(request):
     return render(request, 'patient_record.html', {})
+
+
+# register patient 
+def patient_register(request):
+    if request.method == 'POST':
+        national_id = request.POST.get('national_id')
+        email = request.POST.get('email')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        phone = request.POST.get('phone')
+        gender = request.POST.get('gender')
+        
+        # system generations
+        # password
+        phone_digits = ''.join(filter(str.isdigit, phone))[-4:]  # Last 4 digits
+        raw_password = f"{first_name[0].lower()}{last_name[-1].upper()}{phone_digits}"
+        
+        print(raw_password)
+        role = "patient" # role
+        
+        # Patient-specific fields
+        date_of_birth = request.POST.get('date_of_birth')
+        emergency_contact = request.POST.get('emergency_contact')
+        home_address = request.POST.get('home_address')
+        allergies = request.POST.get('allergies')
+        notes = request.POST.get('notes')
+        photo = request.FILES.get('photo')
+
+        try:
+            with transaction.atomic():
+                user = User.objects.create_user(
+                    username=national_id,
+                    email=email,
+                    password=make_password(raw_password),
+                    first_name=first_name,
+                    last_name=last_name,
+                    role=role,
+                    gender=gender
+                )
+
+                # Checking for profile existence 
+                if User.objects.filter(username=national_id).exists():
+                    messages.error(request, "A patient profile for this user already exists.")
+                    return redirect('patient_management_view')
+    
+                PatientProfile.objects.create(
+                    user=user,
+                    date_of_birth=date_of_birth,
+                    national_id=national_id,
+                    emergency_contact=emergency_contact,
+                    home_address=home_address,
+                    allergies=allergies,
+                    notes=notes,
+                    photo=photo
+                )
+
+                messages.success(request, "Registration successful! Please log in.")
+                return redirect('patient_management_view')
+
+        except Exception as e:
+            messages.error(request, f"Registration failed: {str(e)}")
+
+    return render(request, 'patient_mgt_view.html')
 
 
 # appointment report

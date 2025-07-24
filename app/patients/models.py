@@ -4,9 +4,12 @@ from accounts.models import User
 
 class PatientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_of_birth = models.DateField(null=True)
-    address = models.CharField(max_length=255)
-    phone = models.CharField(max_length=20)
+    date_of_birth = models.DateField(null=True, blank=True)
+    emergency_contact = models.CharField(max_length=20, blank=True)
+    home_address = models.TextField(blank=True)
+    allergies = models.TextField(blank=True)
+    photo = models.ImageField(upload_to='patients/photos/', null=True, blank=True)
+    notes = models.TextField(blank=True)
     is_active = models.BooleanField(default=False)
 
 class MedicalRecord(models.Model):
