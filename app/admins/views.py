@@ -101,7 +101,7 @@ def edit_user(request, user_id):
 
 # single user deletion
 def delete_user(request, user_id):
-    user = get_object_or_404(User, id=user_id) # getting user
+    user = get_object_or_404(User, id=user_id) 
     user.delete()
     return redirect('users_management_view')
 
@@ -187,6 +187,14 @@ def patient_register(request):
             messages.error(request, f"Registration failed: {str(e)}")
 
     return render(request, 'patient_mgt_view.html')
+
+
+# patient deletion
+def delete_patient(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user.delete()
+    messages.success(request, "Patient deleted successfully.")
+    return redirect('patient_management_view')  
 
 
 # appointment report

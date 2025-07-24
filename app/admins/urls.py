@@ -9,6 +9,7 @@ urlpatterns = [
     # patients
     path('patient_management/', views.patient_management_view, name='patient_management_view'),
     path('register_patient/', views.patient_register, name='register_patient'),
+    path('delete_patient/<int:user_id>/', views.delete_patient, name='delete_patient'),
     
     # users
     path('users_management_view/', views.users_management_view, name='users_management_view'),

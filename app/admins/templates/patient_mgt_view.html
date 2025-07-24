@@ -65,7 +65,7 @@ Patient Management
           <td class="text-center">
             <a href="{% url 'patient_record' %}" class="btn btn-sm btn-info text-white me-1" title="View"><i class="bi bi-eye"></i></a>
             <button class="btn btn-sm btn-warning text-white me-1" title="Edit"><i class="bi bi-pencil-square"></i></button>
-            <button class="btn btn-sm btn-danger" title="Delete"><i class="bi bi-trash"></i></button>
+            <a href="{% url 'delete_patient' user.id %}" class="btn btn-sm btn-danger" title="Delete"><i class="bi bi-trash"></i></a>
           </td>
         </tr>
        {% endfor %}
