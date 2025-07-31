@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-Patient Management
+Patient Medicals
 {% endblock %}
 
 {% block pageTitle %}
-Patient Details
+Medical Details
 {% endblock %}
 
 {% block content %}
 <div class="py-5" id="recordContainer">
     <div class="d-flex justify-content-between align-items-center mb-3 no-print">
-        <h3 class="mb-0">Medical Details</h3>
+        <h3 class="mb-0"></h3>
         <div class="d-flex gap-2">
             <button class="btn btn-outline-danger" onclick="exportPDF()">
                 <i class="bi bi-file-earmark-pdf me-1"></i> Export PDF
@@ -25,13 +25,14 @@ Patient Details
         </div>
     </div>
     <div class="mb-4">
-        <h5>Patient: <strong>Jane Doe</strong></h5>
-        <p>ID: <code>PT-1005</code></p>
+        <h3>Patient: <strong>{{ user.first_name }} {{ user.last_name }}</strong></h3>
+        <h5>ID: <code>{{ user.username }}</code></h5>
     </div>
 
     <div class="mb-4">
         <div class="row">
             <div class="col-md-6">
+                <!-- assigned Dr. -->
                 <label for="assignDoctor" class="form-label">Assign to Doctor</label>
                 <select class="form-select" id="assignDoctor">
                     <option selected disabled>Select Doctor</option>
@@ -41,6 +42,7 @@ Patient Details
                 </select>
             </div>
             <div class="col-md-6">
+                <!-- assigned Nurse -->
                 <label for="assignNurse" class="form-label">Assign to Nurse</label>
                 <select class="form-select" id="assignNurse">
                     <option selected disabled>Select Nurse</option>
@@ -83,13 +85,22 @@ Patient Details
         <div class="tab-pane fade show active" id="history" role="tabpanel">
             <div class="form-section">
                 <label class="form-label">Past Illnesses</label>
-                <textarea class="form-control readonly-textarea" readonly>Asthma, Malaria</textarea>
+                <textarea class="form-control" readonly>
+                    - Asthma
+                    - Malaria
+                </textarea>
                 <label class="form-label mt-3">Surgeries</label>
-                <textarea class="form-control readonly-textarea" readonly>Appendectomy (2019)</textarea>
+                <textarea class="form-control" readonly>
+                    - Appendectomy (2019)
+                </textarea>
                 <label class="form-label mt-3">Allergies</label>
-                <textarea class="form-control readonly-textarea" readonly>Penicillin</textarea>
+                <textarea class="form-control" readonly>
+                    - Penicillin
+                </textarea>
                 <label class="form-label mt-3">Family History</label>
-                <textarea class="form-control readonly-textarea" readonly>Father had hypertension</textarea>
+                <textarea class="form-control" readonly>
+                    - Father had hypertension
+                </textarea>
             </div>
         </div>
         <div class="tab-pane fade" id="condition" role="tabpanel">

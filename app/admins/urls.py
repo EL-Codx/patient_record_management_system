@@ -9,6 +9,7 @@ urlpatterns = [
     # patients
     path('patient_management/', views.patient_management_view, name='patient_management_view'),
     path('register_patient/', views.patient_register, name='register_patient'),
+    path('patient_record/<int:user_id>', views.patient_record, name='patient_record'),
     path('delete_patient/<int:user_id>/', views.delete_patient, name='delete_patient'),
     
     # users
@@ -21,7 +22,6 @@ urlpatterns = [
     path('roles_and_permissions/', views.roles_permissions, name='roles_and_permissions'),
     path('appointments/', views.appointments, name='appointments'),
     path('manage_schedules/', views.manage_schedules, name='manage_schedules'),
-    path('patient_record/', views.patient_record, name='patient_record'),
     path('appointment_report/', views.appointment_report, name='appointment_report'),
     path('patient_activities/', views.patient_activities, name='patient_activities'),   
     path('audit_logs/', views.audit_logs, name='audit_logs'),

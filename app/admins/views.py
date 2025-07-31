@@ -3,7 +3,7 @@ from accounts.models import User
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
-from app.patients.models import PatientProfile
+from app.patients.models import PatientProfile, MedicalRecord, LabTest, Appointment
 from django.db import transaction
 
 
@@ -23,18 +23,13 @@ def management_dashboard(request):
     return render(request, 'index.html', {})
 
 
-# patient management
-def patient_management_view(request):
-    users = User.objects.filter(role='patient', is_superuser=False)
-    return render(request, 'patient_mgt_view.html', {"users": users})
-
-
 # user management
 def users_management_view(request):
     users = User.objects.exclude(is_superuser=True).exclude(role='patient')
     return render(request, 'users.html', {'users': users})
 
 
+# users
 # user registration
 def register_user(request):
     if request.method == 'POST':
@@ -75,12 +70,10 @@ def register_user(request):
 
     return redirect('users_management_view')
 
-
 # single user details
 def view_user_detail(request, user_id):
     user = get_object_or_404(User, id=user_id)
     return render(request, 'user_detail.html', {'user': user})
-
 
 # user edit
 def edit_user(request, user_id):
@@ -97,7 +90,6 @@ def edit_user(request, user_id):
         return redirect('users_management_view')  # Change to your actual list view name
 
     return render(request, 'edit_user.html', {'user': user})
-
 
 # single user deletion
 def delete_user(request, user_id):
@@ -121,10 +113,31 @@ def manage_schedules(request):
     return render(request, 'manage_schedules.html', {})
 
 
+# patients
 # patient records
-def patient_record(request):
-    return render(request, 'patient_record.html', {})
+def patient_record(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    profile = get_object_or_404(PatientProfile, user=user)
+    
+    # related user details
+    medical_records = MedicalRecord.objects.filter(patient=profile)
+    lab_tests = LabTest.objects.filter(patient=profile)
+    appointments = Appointment.objects.filter(patient=profile)
 
+    context = {
+        'user': user,
+        'profile': profile,
+        'medical_records': medical_records,
+        'lab_tests': lab_tests,
+        'appointments': appointments,
+    }
+
+    return render(request, 'patient_record.html', context)
+
+# patient management
+def patient_management_view(request):
+    users = User.objects.filter(role='patient', is_superuser=False)
+    return render(request, 'patient_mgt_view.html', {"users": users})
 
 # register patient 
 def patient_register(request):
@@ -188,13 +201,13 @@ def patient_register(request):
 
     return render(request, 'patient_mgt_view.html')
 
-
 # patient deletion
 def delete_patient(request, user_id):
     user = get_object_or_404(User, id=user_id)
     user.delete()
     messages.success(request, "Patient deleted successfully.")
     return redirect('patient_management_view')  
+
 
 
 # appointment report

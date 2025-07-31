@@ -14,11 +14,33 @@ class PatientProfile(models.Model):
 
 class MedicalRecord(models.Model):
     patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)
-    history = models.TextField()
-    current_condition = models.TextField()
-    medications = models.TextField()
+    current_diagnosis = models.TextField()
+    symptoms = models.TextField()
+    vital_signs = models.TextField()
+    current_medications = models.TextField()
+    treatment_note = models.TextField()
     doctor_notes = models.TextField()
+    surgical_state = models.BooleanField(default=False)
+    surgery = models.TextField()
+    allergies = models.TextField()
+    family_history = models.TextField()
     visit_date = models.DateField(auto_now_add=True)
+
+class MedicalHistory(models.Model):
+    patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)
+    past_illness = models.TextField()
+    past_medications = models.TextField()
+    old_doctor_notes = models.TextField()
+    surgeries = models.TextField()
+    allergies = models.TextField()
+    family_history = models.TextField()
+    medication = models.TextField()
+    treatment_note = models.TextField()
+    symptoms = models.TextField()
+    vital_signs = models.TextField()
+    visited_date = models.DateField()
+    archived_date = models.DateTimeField(auto_now_add=True)
+
 
 class LabTest(models.Model):
     patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)

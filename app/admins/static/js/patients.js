@@ -2,6 +2,7 @@
 const toggleBtn = document.getElementById('toggleEditBtn');
 const textareas = document.querySelectorAll('textarea.readonly-textarea');
 let editMode = false;
+
 toggleBtn.addEventListener('click', () => {
     editMode = !editMode;
     textareas.forEach(box => {
